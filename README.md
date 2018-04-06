@@ -8,4 +8,4 @@ pip install -r requirements.txt
 ./run.sh
 ```
 
-NOTE: the `Products.txt` table had extra trailing tabs in lines 34517-24519 which were manually removed so that `insert.py` could run properly.
+**NOTE:** the `Products.txt` table has extra trailing tabs in lines 34517-24519 which were manually removed so that `insert.py` could run properly.
