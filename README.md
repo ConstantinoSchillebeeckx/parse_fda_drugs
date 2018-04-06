@@ -2,7 +2,9 @@
 
 A quick script to download the [Drugs@FDA](https://www.fda.gov/Drugs/InformationOnDrugs/ucm079750.htm) data into a Postgres database.
 
-To run:
+![schema](schema.png "schema")
+
+## To run
 ```
 pip install -r requirements.txt
 ./run.sh
