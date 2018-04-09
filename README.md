@@ -14,6 +14,7 @@ pip install -r requirements.txt
 
 **NOTE:** 
 
+- no foreign key constraints are established between tables.
 - the `Products.txt` table has extra trailing tabs in lines 34517-24519 which were manually removed so that `insert.py` could run properly.
 - all table names and table attributes are formatted with underscores and lowercase; for example the table name `ApplicationDocs` is created as `application_docs`.
 - the archive [fda_drugs_2018-04-09.zip](fda_drugs_2018-04-09.zip) is provided as a refernce for a set of data that currently works with this repo; note that these data are otherwise updated on a **weekly basis**.
