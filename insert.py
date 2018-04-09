@@ -1,12 +1,13 @@
 #!/usr/bin/env python
 
 import pandas as pd
-import os, re
+import os, re, sys
 from sqlalchemy import create_engine
 
 '''
-Script will load all of the Drugs@FDA data into a postgres database by 
-the name of `fda_nme`
+Script will load all of the Drugs@FDA data into a postgres database of
+the name defined by the first sys.argv:
+python insert.py table_name
 
 Assumes that data was downloaded and extracted into the directory `raw/` 
 and that a postgres server is running on local host with write privileges 
@@ -31,11 +32,12 @@ def camel_case_to_underscore_lower(name):
         return re.sub( '(?<!^)(?=[A-Z])', '_', name ).lower()
 
 
+assert len(sys.argv) == 2, "You must provide a database table name"
 
 
 # connect to DB
 # assumes current user has read/write access
-conn = create_engine('postgresql://localhost/fda_nme')
+conn = create_engine('postgresql://localhost/' + sys.argv[1])
 
 
 for file in os.listdir('raw'):
