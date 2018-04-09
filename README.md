@@ -1,6 +1,8 @@
 # Parse FDA drugs
 
-A quick script to download the [Drugs@FDA](https://www.fda.gov/Drugs/InformationOnDrugs/ucm079750.htm) data into a Postgres database. A glossary of terms is found [online](https://www.fda.gov/drugs/informationondrugs/ucm079436.htm).
+A quick script to download the [Drugs@FDA](https://www.fda.gov/Drugs/InformationOnDrugs/ucm079750.htm) data into a Postgres database; a similar repo for the [FDA Orange Book](https://www.accessdata.fda.gov/scripts/cder/ob/) is [also available](https://github.com/ConstantinoSchillebeeckx/parse_fda_orange).
+
+A glossary of terms is found [online](https://www.fda.gov/drugs/informationondrugs/ucm079436.htm).
 
 ![schema](schema.png "schema")
 
