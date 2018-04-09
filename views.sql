@@ -21,3 +21,13 @@ CREATE OR REPLACE VIEW public.products_view AS
      LEFT JOIN marketing_status_lookup t3 ON t2.marketing_status_id = t3.marketing_status_id
      LEFT JOIN applications t4 ON t1.appl_no = t4.appl_no
      LEFT JOIN submissions t5 ON (t1.appl_no = t5.appl_no AND t5.submission_type = 'ORIG'::text AND t5.submission_no = 1);
+
+-- date of first approval for each active_ingredient
+CREATE OR REPLACE VIEW public.first_approval AS
+ SELECT DISTINCT ON (products_view.active_ingredient) products_view.appl_no,
+    products_view.product_no,
+    products_view.active_ingredient,
+    products_view.submission_status_date,
+    products_view.submission_status
+   FROM products_view
+  ORDER BY products_view.active_ingredient, products_view.submission_status_date;
