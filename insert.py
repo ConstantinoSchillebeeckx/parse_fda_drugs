@@ -2,6 +2,7 @@
 
 import pandas as pd
 import os, re, sys
+from utils import camel_case_to_underscore_lower as camel
 from sqlalchemy import create_engine
 
 '''
@@ -16,23 +17,9 @@ for user running this script.
 
 
 
-def camel_case_to_underscore_lower(name):
-    """
-    Convert a camel-case name, e.g. someCamelCase into an underscore
-    delimited, lower-case version, e.g. some_camel_case. Any all
-    caps name, e.g. TE, will simply be lower-cased, e.g. te
-
-    https://stackoverflow.com/a/7322356/1153897
-    """
-
-    if name.isupper():
-        return name.lower()
-    else:
-        name = name.replace('ID','Id').replace('_','')
-        return re.sub( '(?<!^)(?=[A-Z])', '_', name ).lower()
 
 
-assert len(sys.argv) == 2, "You must provide a database table name"
+assert len(sys.argv) == 2, "You must provide a database name."
 
 
 # connect to DB
@@ -43,11 +30,11 @@ conn = create_engine('postgresql://localhost/' + sys.argv[1])
 for file in os.listdir('raw'):
     
     # filename without extension
-    name = camel_case_to_underscore_lower(os.path.splitext(file)[0])
+    name = camel(os.path.splitext(file)[0])
     
     # read data
     df = pd.read_csv('raw/'+file, sep='\t', encoding = "ISO-8859-1")
-    df.columns = [camel_case_to_underscore_lower(l) for l in df.columns]
+    df.columns = [camel(l) for l in df.columns]
     
     # insert data
     print("Loading data for %s" %name)
