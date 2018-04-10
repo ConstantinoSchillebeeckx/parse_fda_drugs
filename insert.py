@@ -2,6 +2,7 @@
 
 import pandas as pd
 import os, re, sys
+import utils
 from utils import camel_case_to_underscore_lower as camel
 from sqlalchemy import create_engine
 
@@ -37,6 +38,6 @@ for file in os.listdir('raw'):
     df.columns = [camel(l) for l in df.columns]
     
     # insert data
-    print("Loading data for %s" %name)
+    print("Loading data for %s ..." %name)
     df.to_sql(name, con=conn, if_exists='replace', index=False)
 

@@ -10,7 +10,7 @@ def camel_case_to_underscore_lower(name):
     """
 
     name = re.sub('\s+', '', name)
-    name = name.replace('ID','Id').replace('FDA','Fda')
+    name = name.replace('ID','Id').replace('FDA','Fda').replace('URL','Url')
     name = name.replace("&nbsp", "").replace('_','')
 
     if name.isupper():
@@ -58,10 +58,31 @@ def xml_to_df(table):
     df.replace('N/A', np.nan, inplace=True)
     df.replace('TBD', np.nan, inplace=True)
 
+    df = make_dates(df)
+    
+    return df
+
+def make_dates(df):
+    '''
+    Convert any columns with 'date' in the name to a datetime column.
+    '''
+
     # convert to datetime
     for l in df.columns:
-        if 'date' in l:
+        if 'date' in l.lower():
             df[l] = pd.to_datetime(df[l], infer_datetime_format=True)
 
-    
+    return df
+
+
+def make_int(df):
+    '''
+    Convert any columns with 'id' in the name to a int column.
+    '''
+
+    # convert to int
+    for l in df.columns:
+        if 'int' in l.lower():
+            df[l] = df[l].astype(int)
+
     return df
