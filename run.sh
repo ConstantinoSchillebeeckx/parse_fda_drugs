@@ -1,8 +1,8 @@
 #/bin/sh
 
 # download data
-#curl https://www.fda.gov/downloads/Drugs/InformationOnDrugs/UCM527389.zip > dl.zip
-#unzip dl.zip -d raw
+curl https://www.fda.gov/downloads/Drugs/InformationOnDrugs/UCM527389.zip > dl.zip
+unzip dl.zip -d raw
 
 # create postgres DB
 db="fda_nme"
