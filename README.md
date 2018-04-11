@@ -9,6 +9,9 @@ A glossary of terms is found [online](https://www.fda.gov/drugs/informationondru
 ![schema](schema.png "schema")
 
 ## To run
+
+**NOTE:** project assumes python3
+
 ```
 pip install -r requirements.txt
 ./run.sh
