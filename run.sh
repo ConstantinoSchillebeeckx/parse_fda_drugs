@@ -4,6 +4,9 @@
 curl https://www.fda.gov/downloads/Drugs/InformationOnDrugs/UCM527389.zip > dl.zip
 unzip dl.zip -d raw
 
+# if the downloaded file has a malformed Products.txt; uncomment the following
+# unzip fda_drugs_2018-04-09.zip -d raw
+
 # create postgres DB
 db="fda_nme"
 dropdb $db --if-exists
